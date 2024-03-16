@@ -1,0 +1,4 @@
+TODO: 
+
+- Connect serverless database
+- Adjust mobile css

@@ -15,6 +15,10 @@ img{
     border-radius: 30px;
 }
 
+.top{
+    margin: 40px 20px 20px 20px;
+}
+
 /* General button styling */
 .btn {
     background: #382c00; 
@@ -48,6 +52,7 @@ img{
     border: 1px solid #ccc; /* Example border, adjust color as needed */
     padding: 5px 10px; /* Adjust padding for input field's interior space */
     width: 300px; /* Adjust input field width */
+    width: 18vw; /* Adjust input field width */
 }
 
 
@@ -67,13 +72,14 @@ img{
     background-color: #db9948;
     display: flex;
     justify-content: center;
-     align-items: center; 
+    align-items: center; 
     border: 1px solid #ddd;
     width: 90%;
     border-radius: 30px;
-    padding: 20px;
+    /* padding: 20px; */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-size: 130%;
+    margin-bottom: 20px;
   }
 
 
