@@ -1,27 +1,80 @@
 body, html {
     margin: 0;
     padding: 0;
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     height: 100vh;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  }
-  
-  .grid-container {
+    text-align: center;
+    background: rgb(249, 232, 201);
+
+}
+
+img{
+    border-radius: 30px;
+}
+
+/* General button styling */
+.btn {
+    background: #382c00; 
+    border: none; /* Remove border */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding around the text */
+    border-radius: 30px; /* Rounded corners */
+    cursor: pointer; /* Cursor changes to a hand icon */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    font-size: 16px; /* Increase font size */
+    font-weight: bold; /* Bold text */
+}
+
+/* Hover state */
+.btn:hover {
+    background: #4c4119;
+    box-shadow: 0px 0px 15px rgba(255, 174, 0, 0.4); /* Change shadow on hover */
+    transform: translateY(-2px); /* Slightly raise the button */
+}
+
+/* Active (click) state */
+.btn:active {
+    transform: translateY(1px); /* Slightly depress the button on click */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Lessen shadow to simulate pressing */
+}
+
+.inp {
+    border-radius: 10px; /* Adjust for more or less rounded corners */
+    font-size: 14px;
+    border: 1px solid #ccc; /* Example border, adjust color as needed */
+    padding: 5px 10px; /* Adjust padding for input field's interior space */
+    width: 300px; /* Adjust input field width */
+}
+
+
+.grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 10px;
     width: 80%; /* Adjust based on your preference */
-    height: 80vh; /* Adjust based on your preference */
+    height: 70vh; /* Adjust based on your preference */
+    text-align: center;
+    justify-content: center;
+    margin: 30px auto;
   }
   
   .grid-item {
-    background-color: #f0f0f0;
+    background-color: #db9948;
     display: flex;
     justify-content: center;
-    align-items: center;
+     align-items: center; 
     border: 1px solid #ddd;
+    width: 90%;
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 130%;
   }
+
+
   
