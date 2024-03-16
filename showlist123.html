@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housewarming</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top">
+        <h1>Housewarming</h1>
+        <h4>List of attendees</h4>
+    </div>
+    
+    <div>
+        <div>
+            <div class="center">
+                <table id="attendeesTable">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                    </tr>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyCioCgfa5CyLTegdw96H4ph3DQMC9onkW8",
+            authDomain: "housewarmingrsvp-7cff4.firebaseapp.com",
+            projectId: "housewarmingrsvp-7cff4",
+            storageBucket: "housewarmingrsvp-7cff4.appspot.com",
+            messagingSenderId: "232470369617",
+            appId: "1:232470369617:web:fd226aa56f15a72ae02f70",
+            measurementId: "G-M3DGXWEKK1"
+        };
+
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getFirestore(app);
+        
+        // Get a reference to the "rsvp" collection
+        const rsvpCollection = collection(db, "rsvp");
+
+        // Get all RSVPs
+        const querySnapshot = await getDocs(rsvpCollection);
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            const row = document.createElement('tr'); // Create a table row
+
+            const nameCell = document.createElement('td'); // Create a cell for the name
+            nameCell.textContent = data.name;
+            row.appendChild(nameCell);
+
+            const emailCell = document.createElement('td'); // Create a cell for the email
+            emailCell.textContent = data.email;
+            row.appendChild(emailCell);
+
+            const statusCell = document.createElement('td'); // Create a cell for the attendance status
+            statusCell.textContent = data.attending ? "Attending" : "Not attending";
+            row.appendChild(statusCell);
+
+            document.getElementById('attendeesTable').appendChild(row); // Append the row to the table
+        });
+    </script>
+   
+
+</body>
+</html>

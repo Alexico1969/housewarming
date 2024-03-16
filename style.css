@@ -16,8 +16,34 @@ img{
     border-radius: 30px;
 }
 
+table{
+    margin: 20px auto;
+    border:rgba(0, 0, 0, 0.1) 4px solid;
+    border-collapse: collapse;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    background-color: #f5f5f5;
+}
+
+th, td{
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th{
+    background-color: #db9948;
+    color: white;
+}
+
 .top{
     margin: 40px 20px 20px 20px;
+}
+
+.center{
+    margin: auto;
+    text-align: center;
 }
 
 /* General button styling */
