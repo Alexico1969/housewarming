@@ -14,7 +14,8 @@
     <div class="grid-container">
         <div class="grid-item">
             15 Mayflower Ct. | Freeport | 11520<br><br>
-            📞  516-262-1181
+             From 5:00 PM to 9:00 PM <br><br>
+           📞  516-262-1181
         </div>
         <div class="grid-item">
             <img src="/img/house.png" width="100%" height="100%">
@@ -34,6 +35,7 @@
                 <label for="email">Email:</label><br>
                 <input class="inp" type="text" id="email" name="email"><br><br>
                 <!-- radio button for yes or no -->
+                <label for="rsvp">Will you be attending? </label>
                 <input type="radio" id="yes" name="rsvp" value="yes">
                 <label for="yes">Yes</label>
                 <input type="radio" id="no" name="rsvp" value="no">
@@ -46,9 +48,63 @@
             <img src="/img/kitchen.png" width="100%" height="100%">
         </div>
     </div>
-    <div class="bottom">
+    <!--div class="bottom">
         <p>15 Mayflower Ct. | Freeport | 11520</p>
         <p>📞  516-262-1181</p>
-    </div>
+    </div-->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+        import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyCioCgfa5CyLTegdw96H4ph3DQMC9onkW8",
+          authDomain: "housewarmingrsvp-7cff4.firebaseapp.com",
+          projectId: "housewarmingrsvp-7cff4",
+          storageBucket: "housewarmingrsvp-7cff4.appspot.com",
+          messagingSenderId: "232470369617",
+          appId: "1:232470369617:web:fd226aa56f15a72ae02f70",
+          measurementId: "G-M3DGXWEKK1"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getFirestore(app);
+
+        // function for form submission
+       // Function for form submission
+    document.querySelector('form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const rsvpChecked = document.querySelector('input[name="rsvp"]:checked');
+        const rsvp = rsvpChecked ? rsvpChecked.value === "yes" : null; // Check if RSVP is "yes" or "no"
+
+        if(rsvp !== null) {
+            try {
+                await addDoc(collection(db, "rsvp"), {
+                    name: name,
+                    email: email,
+                    attending: rsvp === "yes" // Convert to boolean based on the value
+                });
+                console.log("Document written successfully");
+                // Optionally, reset the form or provide user feedback here
+            } catch (error) {
+                console.error("Error adding document: ", error);
+            }
+        } else {
+            console.log("RSVP selection is required");
+            // Provide user feedback about needing to select an RSVP option
+        }
+    });
+
+    </script>
+
 </body>
 </html>
