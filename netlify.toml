@@ -1,0 +1,3 @@
+[build]
+  command = "node replaceApiKey.js && npm run build"
+  publish = "build"
